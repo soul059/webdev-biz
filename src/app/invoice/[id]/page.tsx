@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { notFound } from 'next/navigation'
+import { notFound, useParams } from 'next/navigation'
 
 interface Invoice {
   invoiceId: string
@@ -42,11 +42,15 @@ interface Invoice {
   qrCodeUrl?: string
 }
 
-export default function InvoicePage({ params }: { params: { id: string } }) {
+
+export default function InvoicePage() {
   const [invoice, setInvoice] = useState<Invoice | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
+  const params = useParams()
+  const receiptId = params?.id as string
+  
   useEffect(() => {
     const fetchInvoice = async () => {
       try {
