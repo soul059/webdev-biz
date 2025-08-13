@@ -23,7 +23,7 @@ const verifyAccess = (request: NextRequest) => {
 // GET /api/clients/[id] - Get specific client
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
   try {
     const user = verifyAccess(request)
@@ -32,6 +32,7 @@ export async function GET(
     }
 
     await dbConnect()
+    const { params } = context;
     const clientId = params.id
 
     const client = await Client.findOne({ clientId })
@@ -80,7 +81,7 @@ export async function GET(
 // DELETE /api/clients/[id] - Delete client (admin only)
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
   try {
     const user = verifyAccess(request)
@@ -89,6 +90,7 @@ export async function DELETE(
     }
 
     await dbConnect()
+    const { params } = context;
     const clientId = params.id
 
     const client = await Client.findOneAndUpdate(
