@@ -77,10 +77,7 @@ export async function GET(request: NextRequest) {
 }
 
 // DELETE /api/clients/[id] - Delete client (admin only)
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(request: NextRequest) {
   try {
     const user = verifyAccess(request)
     if (!user || user.email !== process.env.ADMIN_EMAIL) {
@@ -88,7 +85,9 @@ export async function DELETE(
     }
 
     await dbConnect()
-    const clientId = params.id
+    // Extract clientId from the URL
+    const urlParts = request.nextUrl.pathname.split('/');
+    const clientId = urlParts[urlParts.length - 1];
 
     const client = await Client.findOneAndUpdate(
       { clientId },
