@@ -1,0 +1,11 @@
+im web dev and working as freelance and need to have recipt generator for clients 
+
+i wnat to create an recipt generater for my clients need to have qr code that redirects to online recipt that has all prject detils and for me i need to fill form for things in recipt. need to have my panel(admin panel) where i can see all works i done and all analitics of all works
+
+use nextjs , mongodb for database and cloudinnery for website images
+
+make soure all data is encripted and only i can edit and only with qr and me can able to see data of perticuler recept
+
+key elements in recipt date, payment info, all datils about website i created for client, contect info both my and client other things you think needed in this case
+
+at the end need to create pdf of that recept

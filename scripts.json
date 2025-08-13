@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "setup": "node scripts/setup-admin.js",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "setup-admin": "node scripts/setup-admin.js"
+  }
+}
